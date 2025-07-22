@@ -2,10 +2,10 @@
 
   let employees = [
   { name: "Mey Panhawath", position: "Software Engineer" },
-  { name: "Lay Lily", position: "Frontend developer" }
+  { name: "Hansol", position: "Frontend developer" },
 ];
 
-function renderStudents(list = employees) {
+function renderEmployees(list = employees) {
   const employeeCard = document.getElementById('employee-card');
   employeeCard.innerHTML = "";
   list.forEach((employee, idx) => {
@@ -19,7 +19,7 @@ function renderStudents(list = employees) {
   document.getElementById('total-employee').textContent = list.length;
 }
 
-const addStudent = () => {
+const addEmployee = () => {
   let employeeName = document.getElementById('employee-name').value; 
   let employeePosition = document.getElementById('employee-position').value; 
 
@@ -28,33 +28,33 @@ const addStudent = () => {
   else {
     employees.push({ name: employeeName, position: employeePosition });
     id += 1;
-    renderStudents();
+    renderEmployees();
   }
   console.log(`employee add successfully: ${employeeName}, ${employeePosition}`);
 
 }
 
-const searchStudent = () => {
+const searchEmployee = () => {
   let query = document.getElementById('search').value.trim().toLowerCase();
   let filtered = employees.filter(
     s => s.name.toLowerCase().includes(query) || s.position.toLowerCase().includes(query)
   );
-  renderStudents(filtered);
+  renderEmployees(filtered);
 }
 
 const resetSearch = () => {
   document.getElementById('search').value = "";
-  renderStudents();
+  renderEmployees();
 }
 
 document.querySelector('button.bg-blue-900').onclick = function(e) {
   e.preventDefault();
-  addStudent();
+  addEmployee();
 };
 
 document.querySelector('button.bg-pink-300').onclick = function(e) {
   e.preventDefault();
-  searchStudent();
+  searchEmployee();
 };
 document.querySelector('button.bg-red-600').onclick = function(e) {
   e.preventDefault();
